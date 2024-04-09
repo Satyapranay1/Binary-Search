@@ -1,0 +1,27 @@
+class Solution {
+    public int findMin(int[] nums) {
+        int left = 0,right = nums.length - 1,ans = Integer.MAX_VALUE;
+        while (left <= right){
+            int mid = (left + right) / 2;
+            if (nums[left] <= nums[right]){
+                if (ans >= nums[left]){
+                    ans = nums[left];
+                    break;
+                }
+            }
+            if (nums[left] <= nums[mid]){
+                if (ans >= nums[left]){
+                    ans = nums[left];
+                }
+                left = mid + 1;
+            }
+            if (nums[mid] <= nums[right]){
+                right = mid - 1;
+                if (ans >= nums[mid]){
+                    ans = nums[mid];
+                }
+            }
+        }
+        return ans;
+    }
+}
